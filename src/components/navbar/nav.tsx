@@ -36,7 +36,6 @@ export default function Nav() {
 
   useEffect(() => {
     for (let i = 0; i < navigation.length; i++) {
-      console.log(path, navigation[i].href);
       if (path === navigation[i].href) {
         navigation[i].current = true;
       } else {
@@ -46,8 +45,14 @@ export default function Nav() {
   });
 
   const [darkMode, setDarkMode] = useContext(darkContext);
+
   const darkModeHandler = () => {
-    setDarkMode(!darkMode);
+    if (darkMode) {
+      setDarkMode(!darkMode);
+    } else {
+      setDarkMode(!darkMode);
+    }
+
     gsap.fromTo(
       "#darkIcon",
       { opacity: 0, translateY: 10, rotation: 90 },
@@ -123,10 +128,10 @@ export default function Nav() {
 
                 <span
                   id="darkIcon"
-                  className="px-4 text-xl cursor-pointer text-red-400 dark:text-white hover:text-red-700"
+                  className="mx-4 text-xl cursor-pointer text-red-400 dark:text-white hover:text-red-700"
                   onClick={darkModeHandler}
                 >
-                  {darkMode ? <MdNightlight /> : <MdWbSunny />}
+                  {darkMode === "dark" ? <MdNightlight /> : <MdWbSunny />}
                 </span>
               </div>
             </div>
