@@ -56,7 +56,7 @@ export default function Nav() {
     gsap.fromTo(
       "#darkIcon",
       { opacity: 0, translateY: 10, rotation: 90 },
-      { opacity: 1, translateY: 0, rotation: -45 }
+      { opacity: 1, translateY: 0, rotation: 0 }
     );
   };
 
@@ -131,7 +131,11 @@ export default function Nav() {
                   className="mx-4 text-xl cursor-pointer text-red-400 dark:text-white hover:text-red-700"
                   onClick={darkModeHandler}
                 >
-                  {darkMode === "dark" ? <MdNightlight /> : <MdWbSunny />}
+                  {darkMode ? (
+                    <MdNightlight className="-rotate-45" />
+                  ) : (
+                    <MdWbSunny />
+                  )}
                 </span>
               </div>
             </div>
